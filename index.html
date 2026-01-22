@@ -1,57 +1,358 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <title>MythBuster – Poster Demo</title>
+  <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>MythBuster — Demo</title>
+  <meta name="description" content="MythBuster demo page for the poster presentation (MENA ML Winter School 2026 @ KAUST)." />
+
   <style>
-    body {
-      font-family: Arial, sans-serif;
-      max-width: 800px;
-      margin: 40px auto;
-      padding: 0 20px;
-      line-height: 1.6;
+    :root{
+      --bg:#0b1020;
+      --card:#111a33;
+      --text:#e8ecff;
+      --muted:#b6c0ff;
+      --line:rgba(255,255,255,.12);
+      --accent:#7aa2ff;
+      --accent2:#88f0ff;
+      --shadow: 0 12px 30px rgba(0,0,0,.35);
+      --radius: 18px;
+      --max: 980px;
     }
-    h1 { margin-bottom: 0; }
-    .note {
-      background: #f5f5f5;
-      padding: 12px;
-      border-left: 4px solid #555;
-      margin: 20px 0;
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
+      background: radial-gradient(1200px 700px at 20% -10%, rgba(122,162,255,.22), transparent 60%),
+                  radial-gradient(900px 600px at 90% 0%, rgba(136,240,255,.14), transparent 55%),
+                  var(--bg);
+      color:var(--text);
+      line-height:1.55;
+    }
+    a{color:var(--accent); text-decoration:none}
+    a:hover{text-decoration:underline}
+    .wrap{max-width:var(--max); margin:0 auto; padding:28px 16px 60px}
+    header{
+      padding:20px 18px;
+      border:1px solid var(--line);
+      background: rgba(17,26,51,.65);
+      backdrop-filter: blur(8px);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+    }
+    .kicker{
+      color:var(--muted);
+      font-size:14px;
+      margin:0 0 10px;
+    }
+    h1{
+      margin:0 0 8px;
+      font-size:34px;
+      line-height:1.15;
+      letter-spacing:-.02em;
+    }
+    .subtitle{
+      margin:0;
+      color:var(--muted);
+      font-size:16px;
+    }
+    .badges{
+      margin-top:14px;
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px;
+    }
+    .badge{
+      border:1px solid var(--line);
+      background: rgba(255,255,255,.06);
+      padding:6px 10px;
+      border-radius:999px;
+      font-size:13px;
+      color:var(--muted);
+    }
+    main{margin-top:18px}
+    section{
+      margin-top:16px;
+      padding:18px;
+      border:1px solid var(--line);
+      background: rgba(17,26,51,.55);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+    }
+    h2{
+      margin:0 0 10px;
+      font-size:20px;
+      letter-spacing:-.01em;
+    }
+    p{margin:10px 0}
+    ul{margin:10px 0 0 18px}
+    .note{
+      border-left:3px solid var(--accent2);
+      padding:10px 12px;
+      background: rgba(136,240,255,.06);
+      border-radius:12px;
+      color:var(--muted);
+      margin-top:10px;
+    }
+    .ctaRow{
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+      margin-top:12px;
+    }
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      padding:10px 12px;
+      border-radius:12px;
+      border:1px solid var(--line);
+      background: rgba(122,162,255,.12);
+      color: var(--text);
+      font-weight:600;
+      text-decoration:none;
+    }
+    .btn:hover{background: rgba(122,162,255,.18); text-decoration:none}
+    .btn.secondary{background: rgba(255,255,255,.06)}
+    .grid{
+      display:grid;
+      grid-template-columns: 1fr;
+      gap:12px;
+      margin-top:12px;
+    }
+    @media (min-width: 860px){
+      .grid{grid-template-columns: 1fr 1fr 1fr;}
+    }
+    figure{
+      margin:0;
+      border:1px solid var(--line);
+      background: rgba(255,255,255,.04);
+      border-radius: 14px;
+      overflow:hidden;
+    }
+    figure img{
+      display:block;
+      width:100%;
+      height:auto;
+    }
+    figcaption{
+      padding:10px 10px 12px;
+      color:var(--muted);
+      font-size:13px;
+      border-top:1px solid var(--line);
+    }
+    .video{
+      border:1px solid var(--line);
+      border-radius:14px;
+      overflow:hidden;
+      background: rgba(255,255,255,.04);
+      margin-top:12px;
+    }
+    .video iframe, .video video{
+      width:100%;
+      aspect-ratio: 16 / 9;
+      border:0;
+      display:block;
+    }
+    .twoCol{
+      display:grid;
+      grid-template-columns: 1fr;
+      gap:14px;
+    }
+    @media (min-width: 860px){
+      .twoCol{grid-template-columns: 1.15fr .85fr;}
+    }
+    .contact{
+      margin-top:10px;
+      padding:12px;
+      border:1px dashed rgba(255,255,255,.22);
+      border-radius:14px;
+      background: rgba(255,255,255,.03);
+    }
+    footer{
+      margin-top:18px;
+      color: rgba(232,236,255,.65);
+      font-size:13px;
+      text-align:center;
+    }
+    .divider{
+      margin-top:10px;
+      border-top:1px solid var(--line);
     }
   </style>
 </head>
+
 <body>
+  <div class="wrap">
 
-<h1>MythBuster</h1>
-<p><strong>Automated Fact-Checking for Arabic Health Videos</strong></p>
+    <header>
+      <p class="kicker">Demo page for the poster presentation (MENA ML Winter School 2026 at KAUST, Saudi Arabia)</p>
+      <h1>MythBuster</h1>
+      <p class="subtitle">Automated Fact-Checking for Arabic Videos About Diabetes</p>
 
-<div class="note">
-  This page is the official demo landing page for the MENA ML Winter School poster.
-  <br>
-  Recorded demo and screenshots will be added shortly.
-</div>
+      <div class="badges">
+        <span class="badge">Arabic video → claims → evidence → verdicts</span>
+        <span class="badge">Evidence grounding (RAG + web search)</span>
+        <span class="badge">Poster companion demo</span>
+      </div>
+    </header>
 
-<h2>About the Project</h2>
-<p>
-MythBuster is an AI system that analyzes Arabic health-related video content,
-extracts claims, and verifies them against trusted medical sources.
-</p>
+    <main>
 
-<h2>Live Demo</h2>
-<p>
-Due to video downloading restrictions on hosted servers, the interactive demo
-is presented in-person on the author's laptop during the poster session.
-</p>
+      <!-- Section: Demo -->
+      <section id="demo">
+        <h2>Demo</h2>
+        <p>
+          The core demo is a short recorded walkthrough showing an end-to-end analysis of one Arabic diabetes-related video.
+          (An embedded video will appear here once uploaded.)
+        </p>
 
-<h2>Links</h2>
-<ul>
-  <li><a href="https://github.com/asaazamaan/MythBuster" target="_blank">Main project repository</a></li>
-  <li><a href="https://www.linkedin.com/" target="_blank">LinkedIn</a></li>
-</ul>
+        <!-- Choose ONE of the embed options below -->
 
-<p><em>Contact: asaazamaan (at) gmail.com</em></p>
+        <!-- Option 1: YouTube embed (replace VIDEO_ID) -->
+        <div class="video" aria-label="Demo video embed (YouTube)">
+          <iframe
+            src="https://www.youtube.com/embed/VIDEO_ID"
+            title="MythBuster Demo"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            allowfullscreen>
+          </iframe>
+        </div>
 
+        <!-- Option 2: Local MP4 (comment out YouTube iframe above, and use this)
+        <div class="video" aria-label="Demo video (MP4)">
+          <video controls>
+            <source src="assets/mythbuster-demo.mp4" type="video/mp4" />
+            Your browser does not support the video tag.
+          </video>
+        </div>
+        -->
+
+        <div class="ctaRow">
+          <!-- Replace with your final video link if you prefer a button -->
+          <a class="btn" href="#" target="_blank" rel="noopener">Watch demo</a>
+          <!-- Optional: link to repo -->
+          <a class="btn secondary" href="https://github.com/asaazamaan/MythBuster" target="_blank" rel="noopener">GitHub repository</a>
+        </div>
+
+        <div class="note">
+          If embedded playback is not available, use the “Watch demo” link above.
+        </div>
+      </section>
+
+      <!-- Section: What the demo shows -->
+      <section id="what-youll-see">
+        <h2>What the demo shows</h2>
+        <p>In the recorded demo, you will see:</p>
+        <ul>
+          <li>Submitting a short Arabic diabetes-related video URL</li>
+          <li>Automatic transcription of the spoken Arabic content</li>
+          <li>Extraction of check-worthy medical claims related to diabetes</li>
+          <li>
+            Generation of fact-checking verdicts
+            (TRUE / FALSE / PARTIALLY TRUE / INSUFFICIENT INFO)
+          </li>
+          <li>
+            Evidence-grounded Arabic medical explanations that justify the verdicts by synthesizing retrieved medical knowledge
+            and explaining the reasoning behind each decision
+          </li>
+          <li>
+            Retrieval of supporting medical evidence with clickable links to trusted sources, including evidence retrieved via
+            web search and retrieval-augmented generation (RAG)
+          </li>
+        </ul>
+      </section>
+
+      <!-- Section: Sample outputs -->
+      <section id="outputs">
+        <h2>Sample outputs</h2>
+        <p>Representative screenshots from the system:</p>
+
+        <div class="grid">
+          <figure>
+            <!-- Replace src with your screenshot file path -->
+            <img src="assets/screenshot-1-full-result.png" alt="Complete fact-checking result screenshot">
+            <figcaption><strong>Screenshot 1:</strong> Complete fact-checking result (claims, verdicts, Arabic reasoning, evidence links).</figcaption>
+          </figure>
+
+          <figure>
+            <img src="assets/screenshot-2-too-long.png" alt="Video duration limit screenshot">
+            <figcaption><strong>Screenshot 2:</strong> Input constraint handling (video exceeds allowed duration).</figcaption>
+          </figure>
+
+          <figure>
+            <img src="assets/screenshot-3-not-diabetes.png" alt="Non-diabetes content screenshot">
+            <figcaption><strong>Screenshot 3:</strong> Domain relevance filtering (video not related to diabetes).</figcaption>
+          </figure>
+        </div>
+
+        <div class="note">
+          Tip: keep screenshots readable (crop whitespace, use high resolution, and ensure verdict labels and sources are visible).
+        </div>
+      </section>
+
+      <!-- Section: Tech stack -->
+      <section id="stack">
+        <h2>Tech stack</h2>
+        <ul>
+          <li><strong>Backend:</strong> FastAPI (API orchestration and request handling)</li>
+          <li><strong>Frontend:</strong> React (interactive results visualization)</li>
+          <li><strong>Database:</strong> PostgreSQL (analysis results storage and caching)</li>
+          <li><strong>Retrieval:</strong> RAG + trusted web search (evidence grounding)</li>
+          <li><strong>DevOps:</strong> Docker (containerized full-stack setup)</li>
+        </ul>
+      </section>
+
+      <!-- Section: About the presenter -->
+      <section id="presenter">
+        <h2>About the presenter</h2>
+
+        <div class="twoCol">
+          <div>
+            <p>
+              I am a Computer Science graduate with a strong interest in software engineering,
+              full-stack development, and applied AI systems. I am currently attending the
+              MENA ML Winter School at KAUST, where I am presenting the MythBuster project.
+            </p>
+            <p>
+              I am actively seeking opportunities to further develop my technical skills and
+              contribute to real-world AI and software systems.
+            </p>
+
+            <div class="divider"></div>
+
+            <div class="contact">
+              <p><strong>Contact & links</strong></p>
+              <ul>
+                <!-- Replace # with your real links -->
+                <li>CV: <a href="#" target="_blank" rel="noopener">[link]</a></li>
+                <li>LinkedIn: <a href="#" target="_blank" rel="noopener">[link]</a></li>
+                <li>Email: <a href="mailto:asaazamaan@gmail.com">asaazamaan@gmail.com</a></li>
+              </ul>
+            </div>
+          </div>
+
+          <div>
+            <div class="note">
+              Want to discuss the project, the pipeline, or implementation details?
+              Feel free to reach out via email or LinkedIn.
+            </div>
+
+            <!-- Optional: add a small QR image here if you want -->
+            <!-- <img src="assets/qr.png" alt="QR code" style="width:100%;border-radius:14px;border:1px solid var(--line);margin-top:12px;"> -->
+          </div>
+        </div>
+      </section>
+
+      <footer>
+        © <span id="year"></span> MythBuster — Demo page for poster presentation
+      </footer>
+
+    </main>
+  </div>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
 </body>
 </html>
-
